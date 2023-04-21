@@ -13,7 +13,7 @@ end_second="$5"
 degrees="$6"
 
 # Remove any existing rotation metadata from the input video file
-./remove-rotation.sh "$input_video"
+./remove-rotation-metadata.sh "$input_video"
 
 # Extract the clip from the input video file
 clip_file="${input_video%.*}-clip.mp4"
@@ -21,4 +21,4 @@ clip_file="${input_video%.*}-clip.mp4"
 
 # Rotate the extracted clip
 output_file="${clip_file%.*}-rotated.mp4"
-./rotate-video.sh "$clip_file" "$degrees" "$output_file"
+./rotate-video-degrees.sh "$clip_file" "$degrees" "$output_file"
