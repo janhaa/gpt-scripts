@@ -11,9 +11,9 @@ start_second="$3"
 end_minute="$4"
 end_second="$5"
 
-start_time="$start_minute:$start_second"
-end_time="$end_minute:$end_second"
+start_time=$(printf "%02d:%02d:%02d" 0 "$start_minute" "$start_second")
+end_time=$(printf "%02d:%02d:%02d" 0 "$end_minute" "$end_second")
 
 output_file="${input_video%.*}-clip.mp4"
 
-ffmpeg -i "$input_video" -ss "$start_time" -to "$end_time" -c:v copy -c:a copy "$output_file"
+ffmpeg -i "$input_video" -ss "$start_time" -to "$end_time" -c:v copy -c:a aac -strict experimental -b:a 128k "$output_file"
